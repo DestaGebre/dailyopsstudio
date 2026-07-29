@@ -8,10 +8,14 @@ interface BlogItem {
 }
 
 const { data } = await useAsyncData('home-latest-articles', async () => {
-  const items = await queryCollection('content').all()
+  const items = await queryCollection('blog').all()
   return (items as BlogItem[])
-    .filter((item) => (item.path || '').startsWith('/blog/'))
     .filter((item) => Boolean(item.title || item.description))
+    .sort((a, b) => {
+      const aTime = a.date ? new Date(a.date).getTime() : 0
+      const bTime = b.date ? new Date(b.date).getTime() : 0
+      return bTime - aTime
+    })
     .slice(0, 3)
 })
 
@@ -39,7 +43,7 @@ const latestArticles = computed(() => data.value ?? [])
         />
         <h3>{{ article.title || 'Article' }}</h3>
         <p class="text-muted">{{ article.description || 'New practical article from DailyOpsStudio.' }}</p>
-        <NuxtLink class="button button--secondary" to="/blog">Read Article</NuxtLink>
+        <NuxtLink class="button button--secondary" :to="article.path || '/blog'">Read Article</NuxtLink>
       </article>
     </div>
   </section>
