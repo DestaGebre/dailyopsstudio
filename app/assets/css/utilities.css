@@ -1,0 +1,26 @@
+.container {
+  margin-inline: auto;
+  max-width: var(--container-max);
+  padding-inline: var(--space-4);
+}
+
+.stack {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
