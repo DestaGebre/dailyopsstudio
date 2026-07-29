@@ -34,6 +34,7 @@ function socialPlatform(label: string) {
             alt="DailyOpsStudio logo mark"
             width="64"
             height="64"
+            loading="lazy"
           />
           <p class="site-footer__tagline">Practical templates for work, business and everyday life.</p>
         </div>

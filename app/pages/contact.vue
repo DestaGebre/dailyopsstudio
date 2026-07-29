@@ -3,7 +3,7 @@ import { useSiteLinks } from '~/composables/useSiteLinks'
 
 const { contactEmail, contactEmailHref, etsyUrl, socialLinks, websiteUrl } = useSiteLinks()
 
-useSeoMeta({
+usePageSeo({
   title: 'Contact',
   description: 'Get in touch with DailyOpsStudio for support and general questions.'
 })

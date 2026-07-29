@@ -19,6 +19,8 @@ const headerSocialLinks = socialLinks.slice(0, 2)
             alt="DailyOpsStudio main logo"
             width="240"
             height="96"
+            loading="eager"
+            fetchpriority="high"
           />
         </NuxtLink>
         <MainNavigation />

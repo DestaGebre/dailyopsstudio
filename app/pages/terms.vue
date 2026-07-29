@@ -1,5 +1,5 @@
 <script setup lang="ts">
-useSeoMeta({
+usePageSeo({
   title: 'Terms',
   description: 'Terms and usage details for DailyOpsStudio digital products.'
 })

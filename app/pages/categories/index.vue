@@ -1,5 +1,5 @@
 <script setup lang="ts">
-useSeoMeta({
+usePageSeo({
   title: 'Categories',
   description: 'Explore template categories for operations, organization, planning and everyday life.'
 })

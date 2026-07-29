@@ -6,14 +6,30 @@ import FeatureGrid from '~/components/home/FeatureGrid.vue'
 import HeroSection from '~/components/home/HeroSection.vue'
 import HowItWorks from '~/components/home/HowItWorks.vue'
 import ProductGrid from '~/components/home/ProductGrid.vue'
+import { organizationSchema, schemaGraph, websiteSchema } from '~/utils/schema'
 
-useSeoMeta({
-  title: 'Home',
-  description: 'Professional digital templates for operations, organization, planning and everyday life.',
-  ogTitle: 'DailyOpsStudio | Practical Digital Templates',
-  ogDescription: 'Discover practical templates for work, business and everyday life.',
-  twitterTitle: 'DailyOpsStudio | Practical Digital Templates',
-  twitterDescription: 'Discover practical templates for work, business and everyday life.'
+const { socialLinks } = useSiteLinks()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = runtimeConfig.public.siteUrl
+
+usePageSeo({
+  title: 'Practical Digital Templates',
+  description: 'Professional digital templates for operations, organization, planning and everyday life.'
+})
+
+useHead({
+  script: [
+    {
+      key: 'homepage-schema',
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(
+        schemaGraph(
+          organizationSchema(siteUrl, socialLinks.map((link) => link.url)),
+          websiteSchema(siteUrl)
+        )
+      )
+    }
+  ]
 })
 </script>
 

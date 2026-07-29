@@ -40,6 +40,7 @@ const heroImage = {
       quality="82"
       densities="x1 x2"
       loading="eager"
+      fetchpriority="high"
     />
   </section>
 </template>

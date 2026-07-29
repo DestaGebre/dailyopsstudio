@@ -3,7 +3,7 @@ import { useSiteLinks } from '~/composables/useSiteLinks'
 
 const { etsyUrl } = useSiteLinks()
 
-useSeoMeta({
+usePageSeo({
   title: 'Shop',
   description: 'Browse practical digital templates across work, business and everyday life.'
 })

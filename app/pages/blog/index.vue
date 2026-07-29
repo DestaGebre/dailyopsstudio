@@ -1,5 +1,5 @@
 <script setup lang="ts">
-useSeoMeta({
+usePageSeo({
   title: 'Blog',
   description: 'Read practical tips about templates, workflows and everyday organization.'
 })
