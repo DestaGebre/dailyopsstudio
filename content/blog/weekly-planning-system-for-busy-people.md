@@ -4,14 +4,13 @@ description: "Use one weekly routine to plan your tasks, reduce stress, and keep
 date: "2026-07-29"
 category: "Personal Planning"
 author: "DailyOpsStudio"
+status: "published"
+featured: false
 tags:
   - planning
   - productivity
   - organization
-image: "/images/dailyops/social-banner.png"
 ---
-
-# A Simple Weekly Planning System for Busy People
 
 When your week is full, planning can feel like another task on an already long list. A lightweight weekly system can make everything clearer without adding complexity.
 

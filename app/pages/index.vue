@@ -24,7 +24,10 @@ useHead({
       type: 'application/ld+json',
       innerHTML: JSON.stringify(
         schemaGraph(
-          organizationSchema(siteUrl, socialLinks.map((link) => link.url)),
+          organizationSchema(
+            siteUrl,
+            socialLinks.map((link) => link.url)
+          ),
           websiteSchema(siteUrl)
         )
       )

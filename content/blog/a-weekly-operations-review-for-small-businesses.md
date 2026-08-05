@@ -4,15 +4,14 @@ description: "Use a repeatable weekly review to catch issues early, improve cons
 date: "2026-07-29"
 category: "Business Operations"
 author: "DailyOpsStudio"
+status: "published"
+featured: false
 tags:
   - business
   - operations
   - weekly-review
   - planning
-image: "/images/dailyops/social-banner.png"
 ---
-
-# A Weekly Operations Review for Small Businesses
 
 Most business problems are easier to fix when you spot them early. A weekly operations review helps you do that in under an hour.
 

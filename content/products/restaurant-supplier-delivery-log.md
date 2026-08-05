@@ -5,6 +5,8 @@ category: "Business Operations"
 collection: "Restaurant Operations"
 documentType: "Delivery Log"
 productId: "P007"
+status: "draft"
+featured: false
 price: "6.49"
 currency: "EUR"
 image: "/images/products/restaurant-supplier-delivery-log.png"

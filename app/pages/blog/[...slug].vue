@@ -1,14 +1,30 @@
 <script setup lang="ts">
+import { absoluteSiteUrl } from '~/config/seo'
+import { blogPostingSchema, breadcrumbSchema, schemaGraph } from '~/utils/schema'
+
 const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
 
 interface BlogPost {
   path?: string
   title?: string
   description?: string
   date?: string
+  dateModified?: string
   category?: string
   image?: string
   tags?: string[]
+  relatedProductId?: string
+  status?: 'draft' | 'published' | 'archived'
+  featured?: boolean
+}
+
+interface RelatedProduct {
+  path?: string
+  title?: string
+  description?: string
+  productId?: string
+  status?: 'draft' | 'published' | 'archived'
 }
 
 const { data: post } = await useAsyncData(`blog-post-${route.path}`, async () => {
@@ -19,6 +35,7 @@ const { data: relatedPostsData } = await useAsyncData(`blog-related-${route.path
   const items = await queryCollection('blog').all()
 
   return (items as BlogPost[])
+    .filter((item) => item.status === 'published')
     .filter((item) => item.path && item.path !== route.path)
     .sort((a, b) => {
       const aTime = a.date ? new Date(a.date).getTime() : 0
@@ -27,7 +44,7 @@ const { data: relatedPostsData } = await useAsyncData(`blog-related-${route.path
     })
 })
 
-if (!post.value) {
+if (!post.value || post.value.status !== 'published') {
   throw createError({
     statusCode: 404,
     statusMessage: 'Blog post not found'
@@ -35,6 +52,19 @@ if (!post.value) {
 }
 
 const blogPost = post.value as BlogPost
+const { data: relatedProduct } = await useAsyncData(`blog-product-${route.path}`, async () => {
+  if (!blogPost.relatedProductId) {
+    return null
+  }
+
+  const products = await queryCollection('products').all()
+  return (
+    (products as RelatedProduct[]).find(
+      (item) => item.productId === blogPost.relatedProductId && item.status === 'published'
+    ) || null
+  )
+})
+
 const relatedPosts = computed(() => {
   const items = relatedPostsData.value ?? []
   const sameCategory = items.filter((item) => item.category && item.category === blogPost.category)
@@ -83,6 +113,35 @@ usePageSeo({
   image: blogPost.image || '/images/dailyops/social-banner.png',
   type: 'article'
 })
+
+const postUrl = absoluteSiteUrl(route.path, runtimeConfig.public.siteUrl)
+const postImage = absoluteSiteUrl(blogPost.image || '/images/dailyops/social-banner.png', runtimeConfig.public.siteUrl)
+
+useHead({
+  script: [
+    {
+      key: 'blog-post-schema',
+      type: 'application/ld+json',
+      textContent: JSON.stringify(
+        schemaGraph(
+          blogPostingSchema({
+            headline: blogPost.title || 'DailyOpsStudio article',
+            description: blogPost.description || 'Practical guidance from DailyOpsStudio.',
+            url: postUrl,
+            image: postImage,
+            datePublished: blogPost.date || new Date().toISOString(),
+            dateModified: blogPost.dateModified
+          }),
+          breadcrumbSchema([
+            { name: 'Home', url: absoluteSiteUrl('/', runtimeConfig.public.siteUrl) },
+            { name: 'Blog', url: absoluteSiteUrl('/blog', runtimeConfig.public.siteUrl) },
+            { name: blogPost.title || 'Article', url: postUrl }
+          ])
+        )
+      )
+    }
+  ]
+})
 </script>
 
 <template>
@@ -100,8 +159,9 @@ usePageSeo({
       </header>
 
       <NuxtImg
+        v-if="blogPost.image"
         class="blog-card__image"
-        :src="blogPost.image || '/images/dailyops/social-banner.png'"
+        :src="blogPost.image"
         :alt="`${blogPost.title || 'DailyOpsStudio article'} cover image`"
         width="1200"
         height="640"
@@ -113,6 +173,13 @@ usePageSeo({
       <div class="card blog-article__content">
         <ContentRenderer v-if="post" :value="post" />
       </div>
+
+      <aside v-if="relatedProduct" class="card blog-product-callout stack" aria-labelledby="related-template-title">
+        <p class="blog-sidebar__eyebrow">Related Template</p>
+        <h2 id="related-template-title">{{ relatedProduct.title }}</h2>
+        <p class="text-muted">{{ relatedProduct.description }}</p>
+        <NuxtLink class="button button--primary" :to="relatedProduct.path || '/shop'"> View Template </NuxtLink>
+      </aside>
     </article>
 
     <aside v-if="relatedPosts.length" class="blog-sidebar stack" aria-label="More blog articles">
@@ -126,8 +193,9 @@ usePageSeo({
           <li v-for="relatedPost in relatedPosts" :key="relatedPost.path">
             <NuxtLink class="blog-sidebar__link" :to="relatedPost.path || '/blog'">
               <NuxtImg
+                v-if="relatedPost.image"
                 class="blog-sidebar__thumb"
-                :src="relatedPost.image || '/images/dailyops/social-banner.png'"
+                :src="relatedPost.image"
                 :alt="`${relatedPost.title || 'DailyOpsStudio article'} cover image`"
                 width="240"
                 height="160"

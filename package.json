@@ -4,9 +4,15 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
+    "check:content": "node scripts/validate-content.mjs",
+    "check:links": "node scripts/check-links.mjs",
     "dev": "nuxt dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "generate": "nuxt generate",
+    "lint": "eslint .",
     "typecheck": "nuxt typecheck",
+    "quality": "npm run format:check && npm run lint && npm run check:content && npm run typecheck && npm run build && npm run check:links",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -22,6 +28,9 @@
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
+    "@nuxt/eslint": "^1.16.0",
+    "eslint": "^10.8.0",
+    "prettier": "^3.9.6",
     "vue-tsc": "^3.3.8"
   }
 }

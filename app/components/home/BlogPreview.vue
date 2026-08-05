@@ -5,11 +5,13 @@ interface BlogItem {
   description?: string
   image?: string
   date?: string
+  status?: 'draft' | 'published' | 'archived'
 }
 
 const { data } = await useAsyncData('home-latest-articles', async () => {
   const items = await queryCollection('blog').all()
   return (items as BlogItem[])
+    .filter((item) => item.status === 'published')
     .filter((item) => Boolean(item.title || item.description))
     .sort((a, b) => {
       const aTime = a.date ? new Date(a.date).getTime() : 0
@@ -32,8 +34,9 @@ const latestArticles = computed(() => data.value ?? [])
     <div class="site-grid site-grid--3">
       <article v-for="article in latestArticles" :key="article.path || article.title" class="card stack">
         <NuxtImg
+          v-if="article.image"
           class="blog-card__image"
-          :src="article.image || '/images/dailyops/social-banner.png'"
+          :src="article.image"
           :alt="`${article.title || 'DailyOpsStudio article'} cover image`"
           width="640"
           height="380"

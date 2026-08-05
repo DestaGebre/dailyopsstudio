@@ -5,6 +5,8 @@ category: "Business Operations"
 collection: "Restaurant Operations"
 documentType: "Temperature Log"
 productId: "P006"
+status: "draft"
+featured: false
 price: "5.99"
 currency: "EUR"
 image: "/images/products/restaurant-food-temperature-log.png"

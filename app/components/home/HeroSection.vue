@@ -14,18 +14,12 @@ const heroImage = {
     <div class="stack">
       <h1 id="hero-title">Practical templates for work, business and everyday life.</h1>
       <p>
-        Streamline planning, improve operations, and keep every area of life organized with professionally
-        structured template packs from DailyOpsStudio.
+        Streamline planning, improve operations, and keep every area of life organized with professionally structured
+        template packs from DailyOpsStudio.
       </p>
       <div class="home-hero__actions">
         <NuxtLink class="button button--primary" to="/shop">Browse Shop</NuxtLink>
-        <a
-          v-if="etsyUrl"
-          class="button button--secondary"
-          :href="etsyUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a v-if="etsyUrl" class="button button--secondary" :href="etsyUrl" target="_blank" rel="noopener noreferrer">
           Visit Etsy
         </a>
       </div>

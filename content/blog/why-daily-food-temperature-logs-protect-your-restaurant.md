@@ -4,15 +4,16 @@ description: "A simple temperature log helps restaurant teams spot problems earl
 date: "2026-08-02"
 category: "Restaurant Operations"
 author: "DailyOpsStudio"
+status: "published"
+featured: false
 tags:
   - restaurant-operations
   - food-safety
   - temperature-log
   - daily-checklists
 image: "/images/products/restaurant-food-temperature-log.png"
+relatedProductId: "P006"
 ---
-
-# Why Daily Food Temperature Logs Protect Your Restaurant
 
 Food temperature logs are one of those operational tools that look simple on
 paper but have a big effect on day-to-day restaurant control. A clean log does

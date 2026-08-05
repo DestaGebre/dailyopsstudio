@@ -8,8 +8,8 @@
   --color-border: #dde3df;
   --color-focus: #1f7a5f;
 
-  --font-body: "Source Sans 3", "Segoe UI", Tahoma, sans-serif;
-  --font-heading: "Merriweather", Georgia, serif;
+  --font-body: 'Source Sans 3', 'Segoe UI', Tahoma, sans-serif;
+  --font-heading: 'Merriweather', Georgia, serif;
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;

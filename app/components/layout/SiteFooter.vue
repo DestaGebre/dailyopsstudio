@@ -3,7 +3,7 @@ import SiteContainer from '~/components/layout/SiteContainer.vue'
 import { useSiteLinks } from '~/composables/useSiteLinks'
 
 const year = new Date().getFullYear()
-const { contactEmail, contactEmailHref, etsyUrl, socialLinks, websiteUrl } = useSiteLinks()
+const { contactEmail, contactEmailHref, etsyUrl, socialLinks } = useSiteLinks()
 
 function socialPlatform(label: string) {
   const key = label.toLowerCase()
@@ -28,14 +28,7 @@ function socialPlatform(label: string) {
     <SiteContainer>
       <div class="site-footer__top">
         <div class="site-footer__brand">
-          <NuxtImg
-            class="site-footer__logo"
-            src="/images/dailyops/logo-mark.png"
-            alt="DailyOpsStudio logo mark"
-            width="64"
-            height="64"
-            loading="lazy"
-          />
+          <p class="site-footer__brand-name">DailyOpsStudio</p>
           <p class="site-footer__tagline">Practical templates for work, business and everyday life.</p>
         </div>
         <ul v-if="socialLinks.length" class="site-footer__social" aria-label="Social media links">
@@ -78,7 +71,9 @@ function socialPlatform(label: string) {
                 >
                   <circle cx="12" cy="12" r="9" />
                   <path d="M10.2 20.2l1.1-4.3" />
-                  <path d="M10.7 12.3c0 1.8 1.1 2.7 2.6 2.7 2.2 0 3.7-1.8 3.7-4.1 0-2.1-1.5-3.6-3.8-3.6-2.6 0-4.1 1.9-4.1 3.9 0 .8.3 1.7.8 2.1" />
+                  <path
+                    d="M10.7 12.3c0 1.8 1.1 2.7 2.6 2.7 2.2 0 3.7-1.8 3.7-4.1 0-2.1-1.5-3.6-3.8-3.6-2.6 0-4.1 1.9-4.1 3.9 0 .8.3 1.7.8 2.1"
+                  />
                 </svg>
                 <svg
                   v-else-if="socialPlatform(socialLink.label) === 'youtube'"
@@ -113,40 +108,33 @@ function socialPlatform(label: string) {
         </ul>
       </div>
       <div class="site-footer__grid">
-        <section class="site-footer__column" aria-labelledby="footer-products">
-          <h2 id="footer-products" class="site-footer__heading">Products</h2>
-          <ul class="site-footer__list" aria-label="Product links">
+        <section class="site-footer__column" aria-labelledby="footer-shop">
+          <h2 id="footer-shop" class="site-footer__heading">Shop</h2>
+          <ul class="site-footer__list" aria-label="Shop links">
             <li><NuxtLink to="/shop">All Templates</NuxtLink></li>
-            <li><NuxtLink to="/shop">Featured Products</NuxtLink></li>
+            <li>
+              <NuxtLink :to="{ path: '/shop', query: { category: 'Business Operations' } }">
+                Business Operations
+              </NuxtLink>
+            </li>
+            <li><a v-if="etsyUrl" :href="etsyUrl" target="_blank" rel="noopener noreferrer">Etsy Shop</a></li>
           </ul>
         </section>
 
-        <section class="site-footer__column" aria-labelledby="footer-categories">
-          <h2 id="footer-categories" class="site-footer__heading">Categories</h2>
-          <ul class="site-footer__list" aria-label="Category links">
-            <li><NuxtLink to="/categories">Business Operations</NuxtLink></li>
-            <li><NuxtLink to="/categories">Home Organization</NuxtLink></li>
-            <li><NuxtLink to="/categories">Personal Planning</NuxtLink></li>
-            <li><NuxtLink to="/categories">Vehicle Management</NuxtLink></li>
-          </ul>
-        </section>
-
-        <section class="site-footer__column" aria-labelledby="footer-resources">
-          <h2 id="footer-resources" class="site-footer__heading">Resources</h2>
-          <ul class="site-footer__list" aria-label="Resource links">
+        <section class="site-footer__column" aria-labelledby="footer-explore">
+          <h2 id="footer-explore" class="site-footer__heading">Explore</h2>
+          <ul class="site-footer__list" aria-label="Explore links">
+            <li><NuxtLink to="/categories">Categories</NuxtLink></li>
             <li><NuxtLink to="/blog">Blog</NuxtLink></li>
             <li><NuxtLink to="/about">About</NuxtLink></li>
           </ul>
         </section>
 
-        <section class="site-footer__column" aria-labelledby="footer-company">
-          <h2 id="footer-company" class="site-footer__heading">Company</h2>
-          <ul class="site-footer__list" aria-label="Company links">
-            <li><NuxtLink to="/about">About Us</NuxtLink></li>
+        <section class="site-footer__column" aria-labelledby="footer-support">
+          <h2 id="footer-support" class="site-footer__heading">Support</h2>
+          <ul class="site-footer__list" aria-label="Support links">
             <li><NuxtLink to="/contact">Contact</NuxtLink></li>
-            <li>
-              <a v-if="websiteUrl" :href="websiteUrl" target="_blank" rel="noopener noreferrer">Website</a>
-            </li>
+            <li><a v-if="contactEmail" :href="contactEmailHref">Email Us</a></li>
           </ul>
         </section>
 
@@ -155,14 +143,6 @@ function socialPlatform(label: string) {
           <ul class="site-footer__list" aria-label="Legal links">
             <li><NuxtLink to="/privacy">Privacy</NuxtLink></li>
             <li><NuxtLink to="/terms">Terms</NuxtLink></li>
-          </ul>
-        </section>
-
-        <section class="site-footer__column" aria-labelledby="footer-connect">
-          <h2 id="footer-connect" class="site-footer__heading">Connect</h2>
-          <ul class="site-footer__list" aria-label="Connect links">
-            <li><a v-if="etsyUrl" :href="etsyUrl" target="_blank" rel="noopener noreferrer">Etsy Shop</a></li>
-            <li><a v-if="contactEmail" :href="contactEmailHref">{{ contactEmail }}</a></li>
           </ul>
         </section>
       </div>

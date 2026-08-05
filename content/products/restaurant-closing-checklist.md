@@ -5,6 +5,8 @@ category: "Business Operations"
 collection: "Restaurant Operations"
 documentType: "Checklist"
 productId: "P001"
+status: "published"
+featured: true
 price: "8.54"
 currency: "EUR"
 image: "/images/products/restaurant-closing-checklist.png"

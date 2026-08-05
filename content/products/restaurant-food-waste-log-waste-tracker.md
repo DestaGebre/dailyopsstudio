@@ -5,6 +5,8 @@ category: "Business Operations"
 collection: "Restaurant Operations"
 documentType: "Waste Log"
 productId: "P008"
+status: "draft"
+featured: false
 price: "6.99"
 currency: "EUR"
 image: "/images/products/restaurant-food-waste-log-waste-tracker.png"

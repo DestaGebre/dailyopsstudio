@@ -4,15 +4,16 @@ description: "A daily food waste log helps restaurant teams identify repeat loss
 date: "2026-08-02"
 category: "Restaurant Operations"
 author: "DailyOpsStudio"
+status: "published"
+featured: false
 tags:
   - restaurant-operations
   - food-waste
   - cost-control
   - inventory-control
 image: "/images/products/restaurant-food-waste-log-waste-tracker.png"
+relatedProductId: "P008"
 ---
-
-# How Tracking Food Waste Saves Restaurants Money
 
 Food waste is one of the most common hidden costs in restaurant operations.
 Even teams with strong service and prep routines can lose margin each week when

@@ -5,9 +5,10 @@ category: "Business Operations"
 collection: "Restaurant Operations"
 documentType: "Checklist"
 productId: "P003"
+status: "draft"
+featured: false
 price: "4.99"
 currency: "EUR"
-image: "/images/dailyops/etsy-shop-banner.png"
 tags:
   - cleaning checklist
   - restaurant cleaning

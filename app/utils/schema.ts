@@ -4,6 +4,7 @@ export interface ProductSchemaInput {
   name: string
   description: string
   url: string
+  offerUrl?: string
   image: string
   price: string
   currency?: string
@@ -58,7 +59,7 @@ export const productSchema = (product: ProductSchemaInput) => ({
   brand: { '@type': 'Brand', name: seoConfig.siteName },
   offers: {
     '@type': 'Offer',
-    url: product.url,
+    url: product.offerUrl || product.url,
     price: product.price,
     priceCurrency: product.currency || 'USD',
     availability: `https://schema.org/${product.availability || 'InStock'}`

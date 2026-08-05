@@ -19,13 +19,15 @@ interface ProductPost {
   currency?: string
   audience?: string[]
   frequency?: string
+  status?: 'draft' | 'published' | 'archived'
+  etsyUrl?: string
 }
 
 const { data: product } = await useAsyncData(`product-${route.path}`, async () => {
-  return queryCollection('content').path(route.path).first()
+  return queryCollection('products').path(route.path).first()
 })
 
-if (!product.value) {
+if (!product.value || product.value.status !== 'published') {
   throw createError({
     statusCode: 404,
     statusMessage: 'Product not found'
@@ -35,10 +37,10 @@ if (!product.value) {
 const productPost = product.value as ProductPost
 
 const { data: relatedProductsData } = await useAsyncData(`related-products-${route.path}`, async () => {
-  const items = await queryCollection('content').all()
+  const items = await queryCollection('products').all()
 
   return (items as ProductPost[])
-    .filter((item) => (item.path || '').startsWith('/products/'))
+    .filter((item) => item.status === 'published')
     .filter((item) => item.path && item.path !== route.path)
 })
 
@@ -69,7 +71,11 @@ useHead({
             name: productPost.title || 'Product',
             description: productPost.description || 'Practical template from DailyOpsStudio.',
             url: productUrl.value,
-            image: absoluteSiteUrl(productPost.image || '/images/dailyops/etsy-shop-banner.png', runtimeConfig.public.siteUrl),
+            offerUrl: productPost.etsyUrl || etsyUrl || productUrl.value,
+            image: absoluteSiteUrl(
+              productPost.image || '/images/dailyops/etsy-shop-banner.png',
+              runtimeConfig.public.siteUrl
+            ),
             price: productPost.price || '0',
             currency: productPost.currency || 'EUR'
           }),
@@ -97,8 +103,9 @@ useHead({
       </div>
 
       <NuxtImg
+        v-if="productPost.image"
         class="product-card__image"
-        :src="productPost.image || '/images/dailyops/etsy-shop-banner.png'"
+        :src="productPost.image"
         :alt="`${productPost.title || 'DailyOpsStudio template'} preview`"
         width="1200"
         height="760"
@@ -114,11 +121,19 @@ useHead({
 
     <aside class="product-sidebar stack">
       <div class="card product-sidebar__section stack">
-        <p v-if="productPost.price" class="product-sidebar__price">{{ productPost.price }} {{ productPost.currency || 'EUR' }}</p>
+        <p v-if="productPost.price" class="product-sidebar__price">
+          {{ productPost.price }} {{ productPost.currency || 'EUR' }}
+        </p>
         <p v-if="productPost.documentType" class="text-muted">{{ productPost.documentType }}</p>
         <p v-if="productPost.frequency" class="text-muted">Use: {{ productPost.frequency }}</p>
-        <a v-if="etsyUrl" class="button button--primary" :href="etsyUrl" target="_blank" rel="noopener noreferrer">
-          Shop on Etsy
+        <a
+          v-if="productPost.etsyUrl || etsyUrl"
+          class="button button--primary"
+          :href="productPost.etsyUrl || etsyUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ productPost.etsyUrl ? 'Buy on Etsy' : 'Find on Etsy' }}
         </a>
       </div>
 
@@ -135,8 +150,9 @@ useHead({
           <li v-for="relatedProduct in relatedProducts" :key="relatedProduct.path">
             <NuxtLink class="product-sidebar__related-link" :to="relatedProduct.path || '/shop'">
               <NuxtImg
+                v-if="relatedProduct.image"
                 class="product-sidebar__thumb"
-                :src="relatedProduct.image || '/images/dailyops/etsy-shop-banner.png'"
+                :src="relatedProduct.image"
                 :alt="`${relatedProduct.title || 'DailyOpsStudio template'} preview`"
                 width="240"
                 height="160"
@@ -145,7 +161,9 @@ useHead({
                 quality="80"
               />
               <span class="product-sidebar__related-body">
-                <span class="product-sidebar__related-category">{{ relatedProduct.collection || relatedProduct.category || 'Product' }}</span>
+                <span class="product-sidebar__related-category">{{
+                  relatedProduct.collection || relatedProduct.category || 'Product'
+                }}</span>
                 <span class="product-sidebar__related-title">{{ relatedProduct.title || 'View product' }}</span>
               </span>
             </NuxtLink>

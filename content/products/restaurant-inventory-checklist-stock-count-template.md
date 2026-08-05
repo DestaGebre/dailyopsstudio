@@ -5,6 +5,8 @@ category: "Business Operations"
 collection: "Restaurant Operations"
 documentType: "Inventory Sheet"
 productId: "P005"
+status: "draft"
+featured: false
 price: "6.99"
 currency: "EUR"
 image: "/images/products/restaurant-inventory-checklist-stock-count-template.png"

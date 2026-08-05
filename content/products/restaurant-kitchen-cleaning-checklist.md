@@ -5,9 +5,10 @@ category: "Business Operations"
 collection: "Restaurant Operations"
 documentType: "Checklist"
 productId: "P004"
+status: "draft"
+featured: false
 price: "4.50"
 currency: "EUR"
-image: "/images/dailyops/etsy-shop-banner.png"
 tags:
   - kitchen checklist
   - kitchen cleaning

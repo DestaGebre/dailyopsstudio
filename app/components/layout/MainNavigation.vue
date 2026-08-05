@@ -17,11 +17,7 @@ const isCurrentRoute = (path: string): boolean => {
   <nav aria-label="Primary" class="main-nav">
     <ul class="main-nav__list">
       <li v-for="item in navItems" :key="item.to">
-        <NuxtLink
-          :to="item.to"
-          class="main-nav__link"
-          :aria-current="isCurrentRoute(item.to) ? 'page' : undefined"
-        >
+        <NuxtLink :to="item.to" class="main-nav__link" :aria-current="isCurrentRoute(item.to) ? 'page' : undefined">
           {{ item.label }}
         </NuxtLink>
       </li>

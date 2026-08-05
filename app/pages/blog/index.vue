@@ -7,12 +7,15 @@ interface BlogItem {
   category?: string
   tags?: string[]
   image?: string
+  status?: 'draft' | 'published' | 'archived'
+  featured?: boolean
 }
 
 const { data } = await useAsyncData('blog-posts', async () => {
   const items = await queryCollection('blog').all()
 
   return (items as BlogItem[])
+    .filter((item) => item.status === 'published')
     .filter((item) => Boolean(item.title || item.description))
     .sort((a, b) => {
       const aTime = a.date ? new Date(a.date).getTime() : 0
@@ -25,7 +28,7 @@ const blogPosts = computed(() => data.value ?? [])
 const selectedCategory = ref('All categories')
 const selectedTag = ref('All tags')
 
-const featuredPost = computed(() => blogPosts.value[0])
+const featuredPost = computed(() => blogPosts.value.find((post) => post.featured) || blogPosts.value[0])
 
 const categories = computed(() => {
   const values = Array.from(new Set(blogPosts.value.map((post) => post.category).filter(Boolean))) as string[]
@@ -91,15 +94,14 @@ usePageSeo({
   <section class="site-section">
     <div class="section-heading stack">
       <h1>DailyOps Blog</h1>
-      <p>
-        Practical ideas for business operations, home organization and everyday planning.
-      </p>
+      <p>Practical ideas for business operations, home organization and everyday planning.</p>
     </div>
 
     <article v-if="featuredPost" class="card blog-featured stack">
       <NuxtImg
+        v-if="featuredPost.image"
         class="blog-card__image"
-        :src="featuredPost.image || '/images/dailyops/social-banner.png'"
+        :src="featuredPost.image"
         :alt="`${featuredPost.title || 'DailyOpsStudio article'} cover image`"
         width="1200"
         height="620"
@@ -160,8 +162,9 @@ usePageSeo({
     <div v-if="filteredPosts.length" class="site-grid site-grid--2">
       <article v-for="post in filteredPosts" :key="post.path || post.title" class="card stack">
         <NuxtImg
+          v-if="post.image"
           class="blog-card__image"
-          :src="post.image || '/images/dailyops/social-banner.png'"
+          :src="post.image"
           :alt="`${post.title || 'DailyOpsStudio article'} cover image`"
           width="720"
           height="420"
@@ -177,9 +180,7 @@ usePageSeo({
         <h2>{{ post.title || 'Article' }}</h2>
         <p class="text-muted">{{ post.description || 'Practical insight from DailyOpsStudio.' }}</p>
 
-        <NuxtLink v-if="post.path" class="button button--secondary" :to="post.path">
-          Read Post
-        </NuxtLink>
+        <NuxtLink v-if="post.path" class="button button--secondary" :to="post.path"> Read Post </NuxtLink>
       </article>
     </div>
 
@@ -190,9 +191,7 @@ usePageSeo({
 
     <div v-else class="card stack">
       <h2>No posts yet</h2>
-      <p class="text-muted">
-        Add Markdown files under content/blog and they will automatically appear here.
-      </p>
+      <p class="text-muted">Add Markdown files under content/blog and they will automatically appear here.</p>
     </div>
   </section>
 </template>

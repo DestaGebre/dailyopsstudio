@@ -13,13 +13,7 @@ const { etsyUrl } = useSiteLinks()
       </p>
       <div class="home-hero__actions cta-section__actions">
         <NuxtLink class="button button--primary" to="/shop">Browse Full Collection</NuxtLink>
-        <a
-          v-if="etsyUrl"
-          class="button button--secondary"
-          :href="etsyUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a v-if="etsyUrl" class="button button--secondary" :href="etsyUrl" target="_blank" rel="noopener noreferrer">
           Visit Etsy
         </a>
       </div>

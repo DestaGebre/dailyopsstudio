@@ -4,15 +4,14 @@ description: "A practical monthly checklist routine to keep your home organized 
 date: "2026-07-29"
 category: "Home Organization"
 author: "DailyOpsStudio"
+status: "published"
+featured: false
 tags:
   - home
   - checklist
   - routine
   - organization
-image: "/images/dailyops/social-banner.png"
 ---
-
-# How to Build a Monthly Home Reset Routine
 
 Daily habits keep things running, but a monthly reset prevents small issues from turning into stress.
 

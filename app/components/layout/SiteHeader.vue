@@ -29,13 +29,7 @@ const headerSocialLinks = socialLinks.slice(0, 2)
             <a :href="socialLink.url" target="_blank" rel="noopener noreferrer">{{ socialLink.label }}</a>
           </li>
         </ul>
-        <a
-          v-if="etsyUrl"
-          class="site-header__cta"
-          :href="etsyUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a v-if="etsyUrl" class="site-header__cta" :href="etsyUrl" target="_blank" rel="noopener noreferrer">
           Shop on Etsy
         </a>
         <MobileNavigation />

@@ -4,15 +4,16 @@ description: "Supplier delivery logs give restaurant teams a reliable receiving 
 date: "2026-08-02"
 category: "Restaurant Operations"
 author: "DailyOpsStudio"
+status: "published"
+featured: false
 tags:
   - restaurant-operations
   - supplier-delivery
   - inventory-control
   - receiving-process
 image: "/images/products/restaurant-supplier-delivery-log.png"
+relatedProductId: "P007"
 ---
-
-# How Supplier Delivery Logs Improve Restaurant Operations
 
 Supplier deliveries are one of the most important control points in restaurant
 operations. Every delivery can affect food quality, stock accuracy, cost

@@ -4,15 +4,14 @@ description: "Discover how simple daily checklists can improve efficiency, reduc
 date: "2026-07-29"
 category: "Restaurant Operations"
 author: "DailyOpsStudio"
+status: "published"
+featured: false
 tags:
   - restaurant
   - checklist
   - operations
   - productivity
-image: "/images/dailyops/social-banner.png"
 ---
-
-# Why Every Small Restaurant Needs Daily Checklists
 
 Running a restaurant is fast-paced and demanding. From opening the doors in the morning to closing after the last customer leaves, every day involves dozens of important tasks. Even experienced teams can forget small details during busy shifts.
 
