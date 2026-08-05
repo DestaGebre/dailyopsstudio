@@ -1,5 +1,23 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const siteUrl = import.meta.env.NUXT_PUBLIC_SITE_URL || import.meta.env.DOMAIN || 'https://dailyopsstudio.com'
+const env = (globalThis as typeof globalThis & {
+  process?: {
+    env?: Record<string, string | undefined>
+  }
+}).process?.env ?? {}
+
+const readEnv = (...keys: string[]) => {
+  for (const key of keys) {
+    const value = env[key]?.trim()
+
+    if (value) {
+      return value
+    }
+  }
+
+  return ''
+}
+
+const siteUrl = readEnv('NUXT_PUBLIC_SITE_URL', 'DOMAIN') || 'https://dailyopsstudio.com'
 
 export default defineNuxtConfig({
   modules: ['@nuxt/content', '@nuxt/image', '@nuxtjs/robots', '@nuxtjs/sitemap', '@vueuse/nuxt'],
@@ -7,16 +25,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl,
-      etsyUrl: import.meta.env.NUXT_PUBLIC_ETSY_URL || import.meta.env.ETSY || '',
-      instagramUrl: import.meta.env.NUXT_PUBLIC_INSTAGRAM_URL || import.meta.env.INSTAGRAM || '',
-      tiktokUrl: import.meta.env.NUXT_PUBLIC_TIKTOK_URL || import.meta.env.TIKTOK || '',
-      pinterestUrl:
-        import.meta.env.NUXT_PUBLIC_PINTEREST_URL ||
-        import.meta.env.PININTEREST ||
-        import.meta.env.PINTEREST ||
-        '',
-      youtubeUrl: import.meta.env.NUXT_PUBLIC_YOUTUBE_URL || import.meta.env.YOUTUBE || '',
-      contactEmail: import.meta.env.NUXT_PUBLIC_CONTACT_EMAIL || import.meta.env.EMAIL || ''
+      etsyUrl: readEnv('NUXT_PUBLIC_ETSY_URL', 'ETSY'),
+      instagramUrl: readEnv('NUXT_PUBLIC_INSTAGRAM_URL', 'INSTAGRAM'),
+      tiktokUrl: readEnv('NUXT_PUBLIC_TIKTOK_URL', 'TIKTOK'),
+      pinterestUrl: readEnv('NUXT_PUBLIC_PINTEREST_URL', 'PININTEREST', 'PINTEREST'),
+      youtubeUrl: readEnv('NUXT_PUBLIC_YOUTUBE_URL', 'YOUTUBE'),
+      contactEmail: readEnv('NUXT_PUBLIC_CONTACT_EMAIL', 'EMAIL')
     }
   },
   app: {

@@ -40,7 +40,7 @@ const featuredProducts = computed(() => data.value ?? [])
         <p class="product-card__category">{{ product.category || 'Digital Template' }}</p>
         <h3>{{ product.title || 'Template product' }}</h3>
         <p class="text-muted">{{ product.description || 'Professional template designed for practical everyday use.' }}</p>
-        <NuxtLink class="button button--secondary" to="/shop">View Product</NuxtLink>
+        <NuxtLink class="button button--secondary" :to="product.path || '/shop'">View Product</NuxtLink>
       </article>
     </div>
 
