@@ -1,19 +1,22 @@
 <script setup lang="ts">
+import { useSiteLinks } from '~/composables/useSiteLinks'
+
+const { contactEmail, contactEmailHref } = useSiteLinks()
+
 usePageSeo({
-  title: 'Privacy',
-  description: 'Privacy information for DailyOpsStudio visitors and customers.',
-  robots: 'noindex, follow'
+  title: 'Privacy Policy',
+  description: 'How DailyOpsStudio collects, uses, shares, and protects personal information.'
 })
 </script>
 
 <template>
   <section class="site-section stack">
     <div class="section-heading stack">
-      <p class="legal-page__eyebrow">Last updated August 5, 2026</p>
+      <p class="legal-page__eyebrow">Effective and last updated August 8, 2026</p>
       <h1>Privacy Policy</h1>
       <p>
-        This policy explains how DailyOpsStudio handles personal information when you visit this website, contact us, or
-        follow a link to one of our third-party storefronts or social profiles.
+        This policy explains how DailyOpsStudio handles personal information when you visit this website, contact us,
+        or buy a DailyOpsStudio product through Etsy.
       </p>
     </div>
 
@@ -21,23 +24,26 @@ usePageSeo({
       <section class="stack">
         <h2>Who is responsible for your information</h2>
         <p>
-          DailyOpsStudio operates this website. Privacy questions and requests can be sent to
-          <a href="mailto:dailyopsstudio@gmail.com">dailyopsstudio@gmail.com</a>.
+          DailyOpsStudio is responsible for personal information it receives in connection with this website and its
+          Etsy shop. Privacy questions and requests can be sent to
+          <a v-if="contactEmail" :href="contactEmailHref">{{ contactEmail }}</a
+          ><span v-else>DailyOpsStudio through the contact page</span>.
         </p>
       </section>
 
       <section class="stack">
         <h2>Information we receive</h2>
-        <p>This website does not provide accounts, checkout, comments, or a newsletter form.</p>
+        <p>This website does not provide accounts, checkout, comments, or a newsletter form. We may receive:</p>
         <ul>
           <li>If you email us, we receive your email address, message, and any information you choose to include.</li>
           <li>
-            Our hosting provider may process technical request information such as IP address, browser details,
-            requested pages, timestamps, and security events.
+            When you order through Etsy, Etsy may provide information needed to manage the transaction, such as your
+            name, email address, order details, payment status, and messages. Etsy processes payment information; we do
+            not receive your complete card or bank details.
           </li>
           <li>
-            If you purchase through Etsy or use a social platform, that service processes information under its own
-            policies.
+            Our hosting provider may process technical request information such as IP address, browser details,
+            requested pages, timestamps, and security events.
           </li>
         </ul>
       </section>
@@ -45,6 +51,7 @@ usePageSeo({
       <section class="stack">
         <h2>How and why we use information</h2>
         <ul>
+          <li>To process and support Etsy orders and provide purchased digital products.</li>
           <li>To answer support, product, licensing, or privacy questions.</li>
           <li>To operate, secure, troubleshoot, and improve the website.</li>
           <li>To maintain business records and meet applicable legal obligations.</li>
@@ -53,11 +60,22 @@ usePageSeo({
       </section>
 
       <section class="stack">
+        <h2>Legal reasons for processing</h2>
+        <p>
+          Where data-protection law requires a legal basis, we process information as needed to perform our contract
+          with you, comply with legal obligations, and pursue legitimate interests such as customer support, fraud
+          prevention, website security, and improving our services. Where required, we will rely on your consent, which
+          you may withdraw at any time.
+        </p>
+      </section>
+
+      <section class="stack">
         <h2>Service providers and external websites</h2>
         <p>
-          The site is deployed through Cloudflare Pages. Purchases take place on Etsy, and links may lead to Instagram,
-          TikTok, Pinterest, or YouTube. Those services are separate controllers of the information they collect. Review
-          the
+          We share information only as needed with service providers that help us operate the business, comply with the
+          law, or protect our rights. The site is deployed through Cloudflare Pages, and purchases take place on Etsy.
+          Etsy is also separately responsible for information it collects through its platform. Links may lead to other
+          external services, which operate under their own privacy policies. Review the
           <a href="https://www.cloudflare.com/policies/privacy/" target="_blank" rel="noopener noreferrer"
             >Cloudflare Privacy Policy</a
           >
@@ -80,9 +98,20 @@ usePageSeo({
       <section class="stack">
         <h2>Retention and security</h2>
         <p>
-          We keep correspondence only as long as reasonably needed to answer your request, provide support, maintain
-          necessary records, or meet legal obligations. Reasonable technical and organizational measures are used to
-          protect information, although no internet service can guarantee absolute security.
+          We keep information only as long as reasonably needed to provide products and support, maintain necessary
+          business and transaction records, resolve disputes, enforce agreements, or meet legal obligations. Retention
+          periods vary according to the type of information and the reason it is held. Reasonable technical and
+          organizational measures are used to protect information, although no internet service can guarantee absolute
+          security.
+        </p>
+      </section>
+
+      <section class="stack">
+        <h2>International processing</h2>
+        <p>
+          Etsy, Cloudflare, and other providers may process information in countries other than the one where you live.
+          Where required, those providers use recognized safeguards for international data transfers. Their privacy
+          policies explain their practices in more detail.
         </p>
       </section>
 
@@ -91,7 +120,18 @@ usePageSeo({
         <p>
           Depending on where you live, you may have rights to ask what personal information we hold, request a
           correction or deletion, restrict or object to processing, or receive a portable copy. Contact us using the
-          email above. You may also have the right to complain to your local data-protection authority.
+          email above. We may need to verify your identity before completing a request. You may also have the right to
+          complain to your local data-protection authority. For information controlled by Etsy, submit your request
+          directly to Etsy.
+        </p>
+      </section>
+
+      <section class="stack">
+        <h2>Children's privacy</h2>
+        <p>
+          DailyOpsStudio products and this website are not directed to children under 13, and we do not knowingly
+          collect personal information from children. If you believe a child has provided personal information, please
+          contact us so we can take appropriate action.
         </p>
       </section>
 
