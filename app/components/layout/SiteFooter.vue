@@ -124,6 +124,7 @@ function socialPlatform(label: string) {
         <section class="site-footer__column" aria-labelledby="footer-explore">
           <h2 id="footer-explore" class="site-footer__heading">Explore</h2>
           <ul class="site-footer__list" aria-label="Explore links">
+            <li><NuxtLink to="/resources">Free Resources</NuxtLink></li>
             <li><NuxtLink to="/categories">Categories</NuxtLink></li>
             <li><NuxtLink to="/blog">Blog</NuxtLink></li>
             <li><NuxtLink to="/about">About</NuxtLink></li>

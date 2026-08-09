@@ -7,6 +7,7 @@ export const useSiteNavigation = (): SiteNavItem[] => {
   return [
     { label: 'Home', to: '/' },
     { label: 'Shop', to: '/shop' },
+    { label: 'Resources', to: '/resources' },
     { label: 'Categories', to: '/categories' },
     { label: 'About', to: '/about' },
     { label: 'Blog', to: '/blog' },

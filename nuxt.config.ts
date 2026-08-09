@@ -74,7 +74,7 @@ export default defineNuxtConfig({
   sitemap: {
     autoLastmod: true,
     zeroRuntime: true,
-    exclude: ['/privacy', '/terms']
+    exclude: ['/privacy', '/terms', '/resources/weekly-operations-review-downloads']
   },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false }

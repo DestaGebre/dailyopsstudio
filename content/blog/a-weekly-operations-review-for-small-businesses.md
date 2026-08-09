@@ -15,6 +15,8 @@ tags:
 
 Most business problems are easier to fix when you spot them early. A weekly operations review helps you do that in under an hour.
 
+DailyOpsStudio is preparing a free [Weekly Business Review Worksheet](/resources) to help you follow this process on paper.
+
 ## What to Review Each Week
 
 Use one checklist and repeat it every week:

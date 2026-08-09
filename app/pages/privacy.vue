@@ -12,11 +12,11 @@ usePageSeo({
 <template>
   <section class="site-section stack">
     <div class="section-heading stack">
-      <p class="legal-page__eyebrow">Effective and last updated August 8, 2026</p>
+      <p class="legal-page__eyebrow">Effective and last updated August 9, 2026</p>
       <h1>Privacy Policy</h1>
       <p>
-        This policy explains how DailyOpsStudio handles personal information when you visit this website, contact us,
-        or buy a DailyOpsStudio product through Etsy.
+        This policy explains how DailyOpsStudio handles personal information when you visit this website, contact us, or
+        buy a DailyOpsStudio product through Etsy.
       </p>
     </div>
 
@@ -33,9 +33,13 @@ usePageSeo({
 
       <section class="stack">
         <h2>Information we receive</h2>
-        <p>This website does not provide accounts, checkout, comments, or a newsletter form. We may receive:</p>
+        <p>This website does not provide accounts, checkout, or comments. We may receive:</p>
         <ul>
           <li>If you email us, we receive your email address, message, and any information you choose to include.</li>
+          <li>
+            If you request a free resource, we and our email provider receive your email address, subscription status,
+            consent choices, and technical information associated with the request.
+          </li>
           <li>
             When you order through Etsy, Etsy may provide information needed to manage the transaction, such as your
             name, email address, order details, payment status, and messages. Etsy processes payment information; we do
@@ -53,6 +57,8 @@ usePageSeo({
         <ul>
           <li>To process and support Etsy orders and provide purchased digital products.</li>
           <li>To answer support, product, licensing, or privacy questions.</li>
+          <li>To confirm your email address and deliver a free resource you requested.</li>
+          <li>To send marketing emails only when you separately choose to receive them.</li>
           <li>To operate, secure, troubleshoot, and improve the website.</li>
           <li>To maintain business records and meet applicable legal obligations.</li>
         </ul>
@@ -64,8 +70,8 @@ usePageSeo({
         <p>
           Where data-protection law requires a legal basis, we process information as needed to perform our contract
           with you, comply with legal obligations, and pursue legitimate interests such as customer support, fraud
-          prevention, website security, and improving our services. Where required, we will rely on your consent, which
-          you may withdraw at any time.
+          prevention, website security, and improving our services. We rely on your request to deliver a free resource
+          and on your separate consent for optional marketing emails. You may withdraw marketing consent at any time.
         </p>
       </section>
 
@@ -73,15 +79,19 @@ usePageSeo({
         <h2>Service providers and external websites</h2>
         <p>
           We share information only as needed with service providers that help us operate the business, comply with the
-          law, or protect our rights. The site is deployed through Cloudflare Pages, and purchases take place on Etsy.
-          Etsy is also separately responsible for information it collects through its platform. Links may lead to other
-          external services, which operate under their own privacy policies. Review the
+          law, or protect our rights. The site is deployed through Cloudflare Pages, email forms and delivery are
+          provided by MailerLite, and purchases take place on Etsy. These providers process information under their own
+          privacy terms. Review the
           <a href="https://www.cloudflare.com/policies/privacy/" target="_blank" rel="noopener noreferrer"
             >Cloudflare Privacy Policy</a
           >
           and
           <a href="https://www.etsy.com/legal/privacy/" target="_blank" rel="noopener noreferrer"
             >Etsy Privacy Policy</a
+          >
+          and
+          <a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer"
+            >MailerLite Privacy Policy</a
           >
           before using their services.
         </p>
@@ -90,8 +100,9 @@ usePageSeo({
       <section class="stack">
         <h2>Cookies and local storage</h2>
         <p>
-          DailyOpsStudio does not intentionally set advertising or analytics cookies on this website. External services
-          may use cookies after you follow a link to them, subject to their own settings and policies.
+          DailyOpsStudio does not intentionally set advertising or analytics cookies. The embedded MailerLite form may
+          use necessary technologies for form operation, security, and abuse prevention. External services may use
+          additional cookies after you interact with them, subject to their own settings and policies.
         </p>
       </section>
 

@@ -3,6 +3,7 @@ import BlogPreview from '~/components/home/BlogPreview.vue'
 import CallToAction from '~/components/home/CallToAction.vue'
 import CategoryGrid from '~/components/home/CategoryGrid.vue'
 import FeatureGrid from '~/components/home/FeatureGrid.vue'
+import FreeResourceFeature from '~/components/home/FreeResourceFeature.vue'
 import HeroSection from '~/components/home/HeroSection.vue'
 import HowItWorks from '~/components/home/HowItWorks.vue'
 import ProductGrid from '~/components/home/ProductGrid.vue'
@@ -38,6 +39,7 @@ useHead({
 
 <template>
   <HeroSection />
+  <FreeResourceFeature />
   <CategoryGrid />
   <ProductGrid />
   <FeatureGrid />
