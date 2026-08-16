@@ -86,7 +86,7 @@ const formatDate = (value?: string): string => {
 
 usePageSeo({
   title: 'Blog',
-  description: 'Read practical tips about templates, workflows and everyday organization.'
+  description: 'Practical market research, business evaluation frameworks, workflows and everyday organization.'
 })
 </script>
 
@@ -94,7 +94,7 @@ usePageSeo({
   <section class="site-section">
     <div class="section-heading stack">
       <h1>DailyOps Blog</h1>
-      <p>Practical ideas for business operations, home organization and everyday planning.</p>
+      <p>Practical market research, business operations and systems for making better everyday decisions.</p>
     </div>
 
     <article v-if="featuredPost" class="card blog-featured stack">

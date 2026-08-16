@@ -6,7 +6,7 @@
     "node": ">=22.18.0"
   },
   "scripts": {
-    "build": "nuxt build",
+    "build": "node scripts/validate-build-env.mjs && nuxt build",
     "check:content": "node scripts/validate-content.mjs",
     "check:links": "node scripts/check-links.mjs",
     "db:start": "supabase start",
