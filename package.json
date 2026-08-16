@@ -2,6 +2,9 @@
   "name": "dailyops",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": ">=22.18.0"
+  },
   "scripts": {
     "build": "nuxt build",
     "check:content": "node scripts/validate-content.mjs",
@@ -35,6 +38,8 @@
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
+    "@emnapi/core": "^2.0.0-alpha.3",
+    "@emnapi/runtime": "^2.0.0-alpha.3",
     "@nuxt/eslint": "^1.16.0",
     "eslint": "^10.8.0",
     "prettier": "^3.9.6",
