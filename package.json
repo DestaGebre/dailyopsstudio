@@ -18,7 +18,7 @@
     "dev": "nuxt dev",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "generate": "nuxt generate",
+    "generate": "node scripts/validate-build-env.mjs && nuxt generate",
     "lint": "eslint .",
     "typecheck": "nuxt typecheck",
     "quality": "npm run format:check && npm run lint && npm run check:content && npm run typecheck && npm run build && npm run check:links",
