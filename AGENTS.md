@@ -31,7 +31,11 @@ The website must not be designed only around restaurant products.
 - Keep page components small.
 - Store products and articles as Markdown content.
 - Avoid unnecessary dependencies.
-- Do not add authentication, a database or checkout.
+- Public storefront pages remain static and checkout-free. The authenticated
+  DailyOps dashboard may use the dedicated DailyOps Supabase project for
+  authentication, user-owned operational data and background-task records.
+- Never share a database or runtime dependency with another product.
+- Enforce dashboard data ownership with PostgreSQL row-level security.
 - Product purchase buttons must link to Etsy.
 - Use semantic HTML.
 - Follow accessibility best practices.

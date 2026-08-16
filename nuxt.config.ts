@@ -24,10 +24,12 @@ const siteUrl = readEnv('NUXT_PUBLIC_SITE_URL', 'DOMAIN') || 'https://dailyopsst
 
 export default defineNuxtConfig({
   modules: ['@nuxt/content', '@nuxt/image', '@nuxtjs/robots', '@nuxtjs/sitemap', '@vueuse/nuxt', '@nuxt/eslint'],
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', '~/assets/css/dashboard.css'],
   runtimeConfig: {
     public: {
       siteUrl,
+      supabaseUrl: readEnv('NUXT_PUBLIC_SUPABASE_URL'),
+      supabasePublishableKey: readEnv('NUXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY'),
       etsyUrl: readEnv('NUXT_PUBLIC_ETSY_URL', 'ETSY') || 'https://www.etsy.com/shop/DailyOpsStudio',
       instagramUrl: readEnv('NUXT_PUBLIC_INSTAGRAM_URL', 'INSTAGRAM') || 'https://www.instagram.com/dailyopsstudio/',
       tiktokUrl: readEnv('NUXT_PUBLIC_TIKTOK_URL', 'TIKTOK') || 'https://www.tiktok.com/@dailyopsstudio',
@@ -51,7 +53,13 @@ export default defineNuxtConfig({
     preset: 'static'
   },
   routeRules: {
-    '/**': { prerender: true }
+    '/**': { prerender: true },
+    '/dashboard/**': { prerender: true, robots: false },
+    '/login': { robots: false },
+    '/register': { robots: false },
+    '/forgot-password': { robots: false },
+    '/reset-password': { robots: false },
+    '/auth/**': { robots: false }
   },
   content: {
     build: {
@@ -74,7 +82,17 @@ export default defineNuxtConfig({
   sitemap: {
     autoLastmod: true,
     zeroRuntime: true,
-    exclude: ['/privacy', '/terms', '/resources/weekly-operations-review-downloads']
+    exclude: [
+      '/privacy',
+      '/terms',
+      '/resources/weekly-operations-review-downloads',
+      '/dashboard/**',
+      '/login',
+      '/register',
+      '/forgot-password',
+      '/reset-password',
+      '/auth/**'
+    ]
   },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false }

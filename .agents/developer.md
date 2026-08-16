@@ -13,4 +13,7 @@ Responsibilities:
 - Handle loading, empty and error states.
 - Run typecheck and build after changes.
 
-Do not introduce a backend, database or authentication.
+The public storefront remains static and checkout-free. The authenticated
+dashboard uses the dedicated DailyOps Supabase project. Keep service-role and
+third-party API secrets in server-side Edge Functions, enforce ownership with
+row-level security, and never share another product's database.

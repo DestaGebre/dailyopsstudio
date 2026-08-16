@@ -6,6 +6,12 @@
     "build": "nuxt build",
     "check:content": "node scripts/validate-content.mjs",
     "check:links": "node scripts/check-links.mjs",
+    "db:start": "supabase start",
+    "db:stop": "supabase stop",
+    "db:reset": "supabase db reset --local",
+    "db:lint": "supabase db lint --local --fail-on error",
+    "db:test": "supabase test db",
+    "db:types": "supabase gen types typescript --local --schema public > app/types/database.generated.ts",
     "dev": "nuxt dev",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -21,6 +27,7 @@
     "@nuxt/image": "^2.1.0",
     "@nuxtjs/robots": "^6.1.3",
     "@nuxtjs/sitemap": "^8.3.0",
+    "@supabase/supabase-js": "^2.112.3",
     "@vueuse/nuxt": "^14.4.0",
     "better-sqlite3": "^12.11.1",
     "nuxt": "^4.5.1",
@@ -31,6 +38,7 @@
     "@nuxt/eslint": "^1.16.0",
     "eslint": "^10.8.0",
     "prettier": "^3.9.6",
+    "supabase": "^2.114.0",
     "vue-tsc": "^3.3.8"
   }
 }
