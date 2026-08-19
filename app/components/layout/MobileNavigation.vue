@@ -5,6 +5,13 @@ import { useSiteLinks } from '~/composables/useSiteLinks'
 const route = useRoute()
 const navItems = useSiteNavigation()
 const { etsyUrl } = useSiteLinks()
+const menu = ref<HTMLDetailsElement | null>(null)
+
+const closeMenu = () => {
+  if (menu.value) menu.value.open = false
+}
+
+watch(() => route.fullPath, closeMenu)
 
 const isCurrentRoute = (path: string): boolean => {
   if (path === '/') {
@@ -16,17 +23,28 @@ const isCurrentRoute = (path: string): boolean => {
 </script>
 
 <template>
-  <details class="mobile-nav">
+  <details ref="menu" class="mobile-nav">
     <summary>Menu</summary>
     <nav aria-label="Primary mobile">
       <ul class="mobile-nav__list">
         <li v-for="item in navItems" :key="item.to">
-          <NuxtLink :to="item.to" class="mobile-nav__link" :aria-current="isCurrentRoute(item.to) ? 'page' : undefined">
+          <NuxtLink
+            :to="item.to"
+            class="mobile-nav__link"
+            :aria-current="isCurrentRoute(item.to) ? 'page' : undefined"
+            @click="closeMenu"
+          >
             {{ item.label }}
           </NuxtLink>
         </li>
         <li v-if="etsyUrl">
-          <a class="mobile-nav__link mobile-nav__link--cta" :href="etsyUrl" target="_blank" rel="noopener noreferrer">
+          <a
+            class="mobile-nav__link mobile-nav__link--cta"
+            :href="etsyUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            @click="closeMenu"
+          >
             Shop on Etsy
           </a>
         </li>

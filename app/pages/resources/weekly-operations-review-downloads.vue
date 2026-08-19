@@ -35,6 +35,13 @@ const downloads = [
 
 <template>
   <section class="site-section stack" aria-labelledby="downloads-title">
+    <LayoutPageBreadcrumbs
+      :items="[
+        { label: 'Home', to: '/' },
+        { label: 'Resources', to: '/resources' },
+        { label: 'Weekly Operations Review downloads' }
+      ]"
+    />
     <div class="section-heading stack">
       <p class="resource-eyebrow">Your free resource</p>
       <h1 id="downloads-title">Restaurant Weekly Operations Review</h1>

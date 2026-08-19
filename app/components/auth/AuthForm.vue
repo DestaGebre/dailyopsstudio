@@ -66,43 +66,46 @@ const submit = async () => {
 
 <template>
   <section class="auth-shell" :aria-labelledby="`auth-${mode}-title`">
-    <form class="card auth-card stack" @submit.prevent="submit">
-      <p class="resource-eyebrow">DailyOps dashboard</p>
-      <h1 :id="`auth-${mode}-title`">{{ title }}</h1>
-      <p v-if="errorMessage" class="auth-message auth-message--error" role="alert">{{ errorMessage }}</p>
-      <p v-if="successMessage" class="auth-message auth-message--success" role="status">{{ successMessage }}</p>
-      <label v-if="mode === 'register'"
-        >Display name<input v-model.trim="displayName" autocomplete="name" maxlength="100" required
-      /></label>
-      <label v-if="mode !== 'reset'"
-        >Email address<input v-model.trim="email" type="email" autocomplete="email" required
-      /></label>
-      <label v-if="mode === 'login' || mode === 'register' || mode === 'reset'"
-        >Password<input
-          v-model="password"
-          type="password"
-          :autocomplete="mode === 'login' ? 'current-password' : 'new-password'"
-          minlength="8"
-          required
-      /></label>
-      <button class="button button--primary" type="submit" :disabled="busy">
-        {{
-          busy
-            ? 'Working…'
-            : mode === 'login'
-              ? 'Sign in'
-              : mode === 'register'
-                ? 'Create account'
-                : mode === 'forgot'
-                  ? 'Send recovery link'
-                  : 'Save password'
-        }}
-      </button>
-      <div class="auth-links">
-        <NuxtLink v-if="mode !== 'login'" to="/login">Sign in</NuxtLink>
-        <NuxtLink v-if="mode === 'login'" to="/forgot-password">Forgot password?</NuxtLink>
-        <NuxtLink v-if="mode !== 'register'" to="/register">Create account</NuxtLink>
-      </div>
-    </form>
+    <div class="auth-card stack">
+      <LayoutPageBreadcrumbs :items="[{ label: 'Home', to: '/' }, { label: title }]" />
+      <form class="card stack" @submit.prevent="submit">
+        <p class="resource-eyebrow">DailyOps dashboard</p>
+        <h1 :id="`auth-${mode}-title`">{{ title }}</h1>
+        <p v-if="errorMessage" class="auth-message auth-message--error" role="alert">{{ errorMessage }}</p>
+        <p v-if="successMessage" class="auth-message auth-message--success" role="status">{{ successMessage }}</p>
+        <label v-if="mode === 'register'"
+          >Display name<input v-model.trim="displayName" autocomplete="name" maxlength="100" required
+        /></label>
+        <label v-if="mode !== 'reset'"
+          >Email address<input v-model.trim="email" type="email" autocomplete="email" required
+        /></label>
+        <label v-if="mode === 'login' || mode === 'register' || mode === 'reset'"
+          >Password<input
+            v-model="password"
+            type="password"
+            :autocomplete="mode === 'login' ? 'current-password' : 'new-password'"
+            minlength="8"
+            required
+        /></label>
+        <button class="button button--primary" type="submit" :disabled="busy">
+          {{
+            busy
+              ? 'Working…'
+              : mode === 'login'
+                ? 'Sign in'
+                : mode === 'register'
+                  ? 'Create account'
+                  : mode === 'forgot'
+                    ? 'Send recovery link'
+                    : 'Save password'
+          }}
+        </button>
+        <div class="auth-links">
+          <NuxtLink v-if="mode !== 'login'" to="/login">Sign in</NuxtLink>
+          <NuxtLink v-if="mode === 'login'" to="/forgot-password">Forgot password?</NuxtLink>
+          <NuxtLink v-if="mode !== 'register'" to="/register">Create account</NuxtLink>
+        </div>
+      </form>
+    </div>
   </section>
 </template>

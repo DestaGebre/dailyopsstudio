@@ -147,7 +147,9 @@ useHead({
 <template>
   <section class="site-section blog-article-layout">
     <article class="stack blog-article">
-      <NuxtLink class="blog-back-link" to="/blog">Back to Blog</NuxtLink>
+      <LayoutPageBreadcrumbs
+        :items="[{ label: 'Home', to: '/' }, { label: 'Blog', to: '/blog' }, { label: blogPost.title || 'Article' }]"
+      />
 
       <header class="stack">
         <p v-if="formattedDate || blogPost.category" class="blog-card__meta">

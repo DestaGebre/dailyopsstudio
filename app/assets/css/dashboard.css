@@ -59,6 +59,17 @@
   font-size: 1.2rem;
   font-weight: 800;
 }
+.dashboard-brand span,
+.dashboard-brand small {
+  display: block;
+}
+.dashboard-brand small {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: var(--space-1);
+  opacity: 0.8;
+}
 .dashboard-sidebar ul {
   display: flex;
   flex-wrap: wrap;
@@ -76,7 +87,7 @@
   padding: var(--space-2) var(--space-3);
 }
 .dashboard-sidebar nav a:hover,
-.dashboard-sidebar nav a.router-link-active,
+.dashboard-sidebar nav a.dashboard-link--current,
 .dashboard-account button:hover {
   background: rgba(255, 255, 255, 0.14);
 }
@@ -118,9 +129,18 @@
   background: #f9dddd;
   color: #8b2929;
 }
-.task-result { margin-top: var(--space-2); max-width: 42rem; }
-.task-result summary { color: var(--color-primary-dark); cursor: pointer; font-weight: 700; }
-.task-result p { white-space: pre-wrap; }
+.task-result {
+  margin-top: var(--space-2);
+  max-width: 42rem;
+}
+.task-result summary {
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  font-weight: 700;
+}
+.task-result p {
+  white-space: pre-wrap;
+}
 @media (min-width: 64rem) {
   .dashboard-shell {
     display: grid;

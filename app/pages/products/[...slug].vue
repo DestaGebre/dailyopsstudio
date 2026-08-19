@@ -94,7 +94,9 @@ useHead({
 <template>
   <section class="site-section product-layout">
     <article class="stack product-article">
-      <NuxtLink class="blog-back-link" to="/shop">Back to Shop</NuxtLink>
+      <LayoutPageBreadcrumbs
+        :items="[{ label: 'Home', to: '/' }, { label: 'Shop', to: '/shop' }, { label: productPost.title || 'Product' }]"
+      />
 
       <div class="stack">
         <p class="product-card__category">{{ productPost.category || productPost.collection || 'Digital Template' }}</p>
